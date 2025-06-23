@@ -1,1 +1,19 @@
 # Le fichier YAML est à compléter
+name: Mon Workflow
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v3
+      - name: Installation des dépendances
+        run: npm install
+      - name: Exécution des tests
+        run: npm test
+      - name: Generation artefact de build
+        run: mkdir dist/ && echo "Build" > build.txt
